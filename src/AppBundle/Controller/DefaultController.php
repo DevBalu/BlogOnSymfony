@@ -2,28 +2,28 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Blog\Technology;
+use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Common\Persistence\ManagerRegistry;
 
 class DefaultController extends Controller
 {
 
-	public function introAction(Request $request)
+	public function introAction(Request $request, EntityManagerInterface $em)
 	{
-		// replace this example code with whatever you need
-		return $this->render('default/intro.html.twig', [
-	// 		'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-		]);
-	}
 
-	/*example*/
-	// public function blogParamsAction(Request $request)
-	// {
-	// 	return $this->render('default/blog.html.twig', [
-	// 		"title" => [$request->get('id'), $request->get('name')],
-	// 		"title2" => "New Title 2",
-	// 		"posts" => ["sdfsd", "sadfsdf", "sdfsdf", "sjdfhsldf"]
-	// 	]);
-	// }
+		$tech = new Technology();
+		$tech->setName("Symfony");
+		$tech->setLang("php");
+		$tech->setIcon("https://cdn.dribbble.com/users/1061842/screenshots/2942741/ironman.png");
+		$em->persist($tech);
+		$em->flush();
+
+
+		return $this->render('default/intro.html.twig', ["resp" => 'Saved new product with id '.$tech->getId()]);
+	}
 }

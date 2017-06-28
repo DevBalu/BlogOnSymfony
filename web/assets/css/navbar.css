@@ -38,14 +38,15 @@ body {
 #navbar a:nth-child(1){
 	border-left: none;
 }
- #navbar a:nth-child(1):hover{
-	background: #fff;
-}
 
-#navbar a:hover, :active :focus {
+#navbar a:hover {
 	text-decoration: none;
 	color: #444;
 	background: #f7f7f7;
+}
+
+#navbar a:nth-child(1):hover{
+	background: #fff;
 }
 /*END #navbarbar desk*/
 
@@ -65,6 +66,7 @@ body {
 
 	#navbar {
 		display: block !important;
+		z-index: 3000;
 	}
 	#navbar a {
 		width: 100%;

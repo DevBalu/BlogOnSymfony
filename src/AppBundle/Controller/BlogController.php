@@ -3,12 +3,16 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Blog\Technology;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 class BlogController extends Controller
 {
@@ -24,4 +28,33 @@ class BlogController extends Controller
 			"technologies" => $tech
 			]);
 	}
+
+	public function regAction(Request $request, EntityManagerInterface $em) {
+		return $this->render('default/registration.html.twig', array(
+		));
+	}
+ 
+	public function regqAction(Request $request, EntityManagerInterface $em) {
+
+		$tech = new Technology();
+
+		$tech->setName($request->get('name'));
+		$tech->setLang($request->get('lang'));
+		$tech->setIcon($request->get('icon'));
+
+		$em->persist($tech);
+		$em->flush();
+
+		return $this->render('default/registration.html.twig', array(
+		));
+	}
+
+	public function rmtAction(Request $request, EntityManagerInterface $em) {
+		$tech = $em->getRepository('AppBundle:Blog\Technology')->find($request->get('id'));
+		$em->remove($tech);
+		$em->flush();
+
+		return $this->redirectToRoute('blog_action');
+	}
+
 }

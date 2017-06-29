@@ -44,10 +44,10 @@ body {
 	color: #444;
 	background: #f7f7f7;
 }
-
-#navbar a:nth-child(1):hover{
-	background: #fff;
+#navbar #logo{
+	background: url("../img/log.jpg") no-repeat center center;
 }
+
 /*END #navbarbar desk*/
 
 /*#navbar_mab*/

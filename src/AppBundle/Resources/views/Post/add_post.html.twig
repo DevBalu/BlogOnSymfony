@@ -1,0 +1,55 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Post:addPost{% endblock %}
+
+{% block body %}
+<div class="container">
+		<div class="row">
+			<form action="/savePost" method="post" enctype="multipart/form-data">
+				<div class="col col-md-12">
+					<div class="input-group input-group-lg">
+						<input name="title" type="text" class="form-control" placeholder="title" >
+					</div>
+				</div>
+				<div class="col col-md-12">
+					<div class="input-group input-group-lg">
+						<input name="subtitle" type="text" class="form-control" placeholder="subtitle">
+					</div>
+				</div>
+				<div class="col col-md-12">
+					<div class="input-group input-group-lg">
+						<input name="images[]" type="file" multiple class="form-control" placeholder="images">
+					</div>
+				</div>
+				<div class="col col-md-12">
+					<div class="input-group input-group-lg">
+						<textarea name="content" type="text" class="form-control" placeholder="content"></textarea>
+					</div>
+				</div>
+				<div class="col col-md-12">
+					<div class="input-group input-group-lg">
+						<input name="comments" type="text" class="form-control" placeholder="comments">
+					</div>
+				</div>
+				<div class="col col-md-12">
+					<div class="input-group input-group-lg">
+						<input name="likes" type="text" class="form-control" placeholder="likes">
+					</div>
+				</div>
+				<div class="col col-md-12">
+					<div class="input-group input-group-lg">
+						<input name="reposts" type="text" class="form-control" placeholder="reposts">
+					</div>
+				</div>
+
+				<div class="col col-md-12">
+					<span class="input-group-btn">
+						<button type="submit" class="btn btn-secondary" type="button">add</button>
+					</span>
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+{% endblock %}

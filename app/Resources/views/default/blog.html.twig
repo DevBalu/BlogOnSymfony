@@ -7,14 +7,14 @@
 	<div id="posts_sec">
 		<div class="container-fluid">
 			<!-- Post -->
-			<div class="post animated bounceIn">
+			<div class="post">
 				<div class="row">
 					<!-- <div class="col col-md-1 col-sm-1"> -->
 					<div class="col col-md-2 teh-wrap">
 						<div class="teh">
 							<ul class="lists">
 								{% for tech in technologies %}
-									<li><a href="#"><span>{{ tech.name }}</span></a></li>
+									<li><a href="/rmt?id={{tech.id}}"><span>{{ tech.name }}</span></a></li>
 								{% endfor %}
 							</ul>
 						</div>

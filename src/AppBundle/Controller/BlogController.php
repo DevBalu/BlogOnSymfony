@@ -24,6 +24,7 @@ class BlogController extends Controller
 	}
 
 	public function regAction() {
+
 		return $this->render('default/registration.html.twig', array(
 		));
 	}

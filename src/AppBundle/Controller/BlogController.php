@@ -4,14 +4,8 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Blog\Technology;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Common\Persistence\ManagerRegistry;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
 class BlogController extends Controller
@@ -29,7 +23,7 @@ class BlogController extends Controller
 			]);
 	}
 
-	public function regAction(Request $request, EntityManagerInterface $em) {
+	public function regAction() {
 		return $this->render('default/registration.html.twig', array(
 		));
 	}

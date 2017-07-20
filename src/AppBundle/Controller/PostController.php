@@ -41,6 +41,8 @@ class PostController extends Controller
         $post->setComments($request->get("comments"));
         $post->setlikes($request->get("likes"));
         $post->setReposts($request->get("reposts"));
+        date_default_timezone_set('Europe/Bucharest');
+        $post->setDate(date('j M g:i'));
 
         $em->persist($post);
         $em->flush();
@@ -63,11 +65,13 @@ class PostController extends Controller
     /**
      * @Route("/deletePost")
      */
-    public function deletePostAction()
+    public function deletePostAction(Request $request, EntityManagerInterface $em)
     {
-        return $this->render('AppBundle:Post:delete_post.html.twig', array(
-            // ...
-        ));
+        $post = $em->getRepository('AppBundle:Blog\Post')->find($request->get('id'));
+        $em->remove($post);
+        $em->flush();
+
+        return $this->redirectToRoute('blog_action');
     }
 
 }

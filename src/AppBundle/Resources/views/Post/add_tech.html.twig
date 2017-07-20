@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<form action="/regq" method="post" class="col col-md-4">
+				<h3>TECHNOLOGY</h3>
+				<div class="input-group input-group-lg">
+					<span class="input-group-addon" id="basic-addon1">@</span>
+					<input name="name" type="text" class="form-control" placeholder="name of tech" >
+				</div>
+				<div class="input-group input-group-lg">
+					<span class="input-group-addon" id="basic-addon1">@</span>
+					<input name="lang" type="text" class="form-control" placeholder="language">
+				</div>
+				<div class="input-group input-group-lg">
+					<span class="input-group-addon" id="basic-addon1">@</span>
+					<input name="icon" type="text" class="form-control" placeholder="icon">
+				</div>
+
+				<span class="input-group-btn">
+					<button type="submit" class="btn btn-secondary" type="button">add</button>
+				</span>
+			</form>
+
+		</div>
+	</div>
+{% endblock %}

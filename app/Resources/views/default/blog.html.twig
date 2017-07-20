@@ -5,57 +5,57 @@
 
 {% block body %}
 	<div id="posts_sec">
-		<div class="container-fluid">
-			<!-- Post -->
-			<div class="post">
-				<div class="row">
-					<!-- <div class="col col-md-1 col-sm-1"> -->
-					<div class="col col-md-2 teh-wrap">
-						<div class="teh">
-							<ul class="lists">
-								{% for tech in technologies %}
-									<li><a href="/rmt?id={{tech.id}}"><span>{{ tech.name }}</span></a></li>
-								{% endfor %}
-							</ul>
+        {#Technology#}
+		<div class="teh-wrap">
+			<div class="teh">
+				<ul class="lists">
+                    {% for tech in technologies %}
+						<li><a href="/rmt?id={{tech.id}}"><span>{{ tech.name }}</span></a></li>
+                    {% endfor %}
+				</ul>
+			</div>
+		</div>
+
+		<div class="container">
+
+            {% for post in posts %}
+				<!-- Post -->
+				<div class="post">
+					<div class="row">
+						<div class="col-md-2 offset-md-1 inf-wrap">
+							<div class="info">
+								<span class="date">
+									<span class="month">{{ post.date }}</span>
+								</span>
+
+								<ul class="stats">
+									<li><a href="#" class="icon fa fa-comment"><span> {{ post.comments }}</span></a></li>
+									<li><a href="#" class="icon fa fa-heart"><span> {{ post.likes }}</span></a></li>
+									<li><a href="#" class="icon fa fa-facebook"><span> {{ post.reposts }}</span></a></li>
+									<li><a href="#" class="icon fa fa-twitter"><span> {{ post.reposts }}</span></a></li>
+								</ul>
+							</div><!-- end info -->
 						</div>
-					</div>
 
-					<div class="col col-md-1 col-sm-1 inf-wrap">
-						<div class="info">
-							<span class="date">
-								<span class="month">Jul</span>
-								<span class="day">14</span>
-							</span>
-
-							<ul class="stats">
-								<li><a href="#" class="icon fa fa-comment"><span> 16</span></a></li>
-								<li><a href="#" class="icon fa fa-heart"><span> 32</span></a></li>
-								<li><a href="#" class="icon fa fa-facebook"><span> 128</span></a></li>
-								<li><a href="#" class="icon fa fa-twitter"><span> 64</span></a></li>
-							</ul>
-						</div><!-- end info -->
-					</div>
-
-					<div class="col col-md-6 intr-wrap">
-						<!-- introduction -->
-						<div class="intr">
-							<header>
-								<h2><a href="#">Welcome to DevBalu blog</a></h2>
-								<p>Subtitle of post</p>
-							</header>
+						<div class="col col-md-8 intr-wrap">
+							<!-- introduction -->
+							<div class="intr">
+								<header>
+									<a href="/deletePost?id={{ post.id }}">DEL</a>
+									<h2><a href="#">{{ post.title }}</a></h2>
+									<p>{{ post.subtitle }}</p>
+								</header>
 
 
-							<div class="img_post">
-								<a href="#"><img src="{{ asset('/assets/img/pic01.jpg') }}" style="width: 100%;"></a>
-							</div>
-							<p>
-								<strong>Hello!</strong> You're looking at <strong>Striped</strong>
-							</p>
-							<p> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-						</div><!-- END introduction -->
-					</div>
-				</div><!-- END row -->
-			</div><!-- END post -->
+								<div class="img_post">
+									<a href="#"><img src="{{ asset('/assets/img/pic01.jpg') }}" style="width: 100%;"></a>
+								</div>
+								<p> {{ post.content }}</p>
+							</div><!-- END introduction -->
+						</div>
+					</div><!-- END row -->
+				</div><!-- END post -->
+            {% endfor %}
 
 		</div><!-- END container -->
 	</div><!-- END post_sec -->

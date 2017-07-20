@@ -3,6 +3,7 @@
 namespace AppBundle\Entity\Blog;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * Post
@@ -34,7 +35,6 @@ class Post
      * @ORM\Column(name="subtitle", type="string", length=255)
      */
     private $subtitle;
-
     /**
      * @var array
      *
@@ -69,6 +69,14 @@ class Post
      * @ORM\Column(name="reposts", type="integer")
      */
     private $reposts;
+
+    /**
+     * @var date
+     *
+     * @ORM\Column(name="date", type="string", length=255)
+     */
+    private $date;
+
 
 
     /**
@@ -247,6 +255,30 @@ class Post
     public function getReposts()
     {
         return $this->reposts;
+    }
+
+    /**
+     * Set date
+     *
+     * @param date $date
+     *
+     * @return Post
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return date
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }
 

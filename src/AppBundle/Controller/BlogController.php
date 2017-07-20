@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Blog\Technology;
+use AppBundle\Entity\Blog\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
@@ -10,16 +11,19 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class BlogController extends Controller
 {
-	public function blogAction(EntityManagerInterface $em) {
+	public function blogAction() {
 
-		$tech = $em->getRepository('AppBundle:Blog\Technology')->findAll();
+
+		$tech = $this->getDoctrine()->getRepository(Technology::class)->findBy([], ['id' => 'DESC']);
+		$post = $this->getDoctrine()->getRepository(Post::class)->findBy([], ['id' => 'DESC']);
 
 		if (!$tech) {
 			echo '<script> alert("Technology not found");</script>';
 		}
 
 		return $this->render('default/blog.html.twig', [
-			"technologies" => $tech
+			"technologies" => $tech,
+            "posts" => $post
 			]);
 	}
 
@@ -28,6 +32,13 @@ class BlogController extends Controller
 		return $this->render('default/registration.html.twig', array(
 		));
 	}
+
+	public function regTechAction(){
+
+       return $this->render('AppBundle:Post:save_post.html.twig', array(
+            // ...
+        ));
+    }
  
 	public function regqAction(Request $request, EntityManagerInterface $em) {
 

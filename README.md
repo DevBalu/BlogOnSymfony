@@ -1,2 +1,2 @@
 # BlogOnSymfony
-This project represent my personal blog written in symfony
+This project represent my personal blog written on symfony

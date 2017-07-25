@@ -29,16 +29,13 @@ class PostController extends Controller
 
         $post = new Post();
 
-        $images = [];
-        foreach ($_FILES['images']["name"] as $name) {
-            $images[] = $name;
-        }
-
         $post->setTitle($request->get("title"));
         $post->setSubtitle($request->get("subtitle"));
-        $post->setImages($images);
+
+        $post->setImages(explode(" ", $request->get("images")));
+
         $post->setContent($request->get("content"));
-        $post->setComments($request->get("comments"));
+        $post->setComments(explode(" ", $request->get("comments")));
         $post->setlikes($request->get("likes"));
         $post->setReposts($request->get("reposts"));
         date_default_timezone_set('Europe/Bucharest');
@@ -72,6 +69,17 @@ class PostController extends Controller
         $em->flush();
 
         return $this->redirectToRoute('blog_action');
+    }
+
+    /**
+     * @Route("/post")
+     */
+    public function extpostAction(Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository(Post::class);
+        $extpost = $repository->findOneById($request->get('id'));
+
+        return $this->render('AppBundle:Post:extpost.html.twig', ["extpost" => $extpost]);
     }
 
 }

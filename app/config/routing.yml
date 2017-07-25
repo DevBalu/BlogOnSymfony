@@ -13,7 +13,7 @@ registration_action:
   path: /reg
   defaults: { _controller: AppBundle:Blog:reg }
 
-reg_twch:
+reg_tech:
   path: /regTech
   defaults: { _controller: AppBundle:Blog:regtech }
 

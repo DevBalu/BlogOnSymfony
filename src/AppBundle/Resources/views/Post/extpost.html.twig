@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h3>{{ extpost.title }}</h3>
+    <h3>{{ extpost.subtitle }}</h3>
+
+    {% for images in  extpost.images%}
+        <h3>{{ images }}</h3>
+    {% endfor %}
+
+    <h3>{{ extpost.content }}</h3>
+
+    {% for comments in extpost.comments %}
+        <h3>comments</h3>
+    {% endfor %}
+
+    <form action="/addcom?idp={{ extpost.id }}" method="post">
+        <input type="text">
+        <button type="submit">ADD</button>
+    </form>
+
+{% endblock body %}

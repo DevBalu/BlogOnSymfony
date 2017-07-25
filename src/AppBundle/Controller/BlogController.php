@@ -13,18 +13,17 @@ class BlogController extends Controller
 {
 	public function blogAction() {
 
-
 		$tech = $this->getDoctrine()->getRepository(Technology::class)->findBy([], ['id' => 'DESC']);
 		$post = $this->getDoctrine()->getRepository(Post::class)->findBy([], ['id' => 'DESC']);
 
-		if (!$tech) {
+        if (!$tech) {
 			echo '<script> alert("Technology not found");</script>';
 		}
 
 		return $this->render('default/blog.html.twig', [
 			"technologies" => $tech,
             "posts" => $post
-			]);
+        ]);
 	}
 
 	public function regAction() {
@@ -33,9 +32,9 @@ class BlogController extends Controller
 		));
 	}
 
-	public function regTechAction(){
+	public function regtechAction(){
 
-       return $this->render('AppBundle:Post:save_post.html.twig', array(
+       return $this->render('AppBundle:Post:add_tech.html.twig', array(
             // ...
         ));
     }

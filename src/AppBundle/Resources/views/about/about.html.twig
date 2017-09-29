@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:about:about{% endblock %}
+
+{% block body %}
+
+    <h1>About</h1>
+    <img src="{{ about[0].img }}">
+    <h1>Nik name</h1>
+    {{ about[0].nickname }}
+    <h1>Global Info</h1>
+    {{ about[0].globInfo }}
+    <h1>Contact info</h1>
+    {{ about[0].contactInfo }}
+
+{% endblock %}

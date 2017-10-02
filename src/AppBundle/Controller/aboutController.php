@@ -56,9 +56,9 @@ class aboutController extends Controller
      */
     public function aboutAction(Request $request, EntityManagerInterface $em)
     {
-        $about = $this->getDoctrine()->getRepository(aboutEntity::class)->findBy([], ['id' => 'DESC']);
+        // $about = $this->getDoctrine()->getRepository(aboutEntity::class)->findBy([], ['id' => 'DESC']);
         return $this->render('AppBundle:about:about.html.twig', array(
-            'about' => $about
+            // 'about' => $about
         ));
     }
 

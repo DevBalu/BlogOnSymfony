@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	$("#navbar>a").attr("class", "animated bounceIn");
+	$("#navbar>a").not(':first').attr("class", "animated bounceIn");
 
 	$("#nav-mob").click(function(){
 		if( $("#navbar>a").is(":hidden") ) {

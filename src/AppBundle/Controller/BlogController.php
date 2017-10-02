@@ -16,9 +16,9 @@ class BlogController extends Controller
 		$tech = $this->getDoctrine()->getRepository(Technology::class)->findBy([], ['id' => 'DESC']);
 		$post = $this->getDoctrine()->getRepository(Post::class)->findBy([], ['id' => 'DESC']);
 
-        if (!$tech) {
-			echo '<script> alert("Technology not found");</script>';
-		}
+  //       if (!$tech) {
+		// 	echo '<script> alert("Technology not found");</script>';
+		// }
 
 		return $this->render('default/blog.html.twig', [
 			"technologies" => $tech,

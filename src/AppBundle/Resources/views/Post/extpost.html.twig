@@ -1,22 +1,45 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    Extended Post
+{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{{ asset("/assets/css/main-intro.css") }}"/>
+{% endblock %}
+
 {% block body %}
-    <h3>{{ extpost.title }}</h3>
-    <h3>{{ extpost.subtitle }}</h3>
+        <!-- Main -->
+            <section id="main">
+                <div class="inner">
+                    <div class="image fit">
+                        {% for images in  extpost.images%}
+                            <img src="{{ images }}"/>
+                        {% endfor %}
+                    </div>
+                    <header>
+                        <h1>{{ extpost.title }}</h1>
+                        <h3>{{ extpost.subtitle }}</h3>
+                        <p class="info">3 days ago by <a href="#">Jane Doe</a></p>
+                    </header>
+                    <p>{{ extpost.content }}</p>
+                </div>
+            </section>
 
-    {% for images in  extpost.images%}
-        <img src="{{ images }}"/>
-    {% endfor %}
-
-    <h3>{{ extpost.content }}</h3>
-
-    {% for comments in extpost.comments %}
-        <h3>comments</h3>
-    {% endfor %}
-
-    <form action="/addcom?idp={{ extpost.id }}" method="post">
-        <input type="text">
-        <button type="submit">ADD</button>
-    </form>
+        <!-- Footer -->
+            <footer id="footer">
+                <ul class="icons">
+                    <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                </ul>
+            </footer>
 
 {% endblock body %}
+
+{% block scripts %}
+    <script src="{{ asset("/assets/js/jquery.scrolly.min.js")}}"></script>
+    <script src="{{ asset("/assets/js/skel.min.js")}}"></script>
+    <script src="{{ asset("/assets/js/util.js")}}"></script>
+    <script src="{{ asset("/assets/js/main.js")}}"></script>
+{% endblock %}
